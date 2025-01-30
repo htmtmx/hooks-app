@@ -4,10 +4,11 @@ import './index.css'
 // import { CounterApp } from './01_useState/CounterApp'
 // import { HooksApp } from './HooksApp'
 // import { CounterWithCustomHook } from './01_useState/CounterWithCustomHook'
-import { SimpleForm } from './02_useEffect/SimpleForm'
+// import { SimpleForm } from './02_useEffect/SimpleForm'
+import { FormWithCustomHook } from './02_useEffect/FormWithCustomHook'
 
 createRoot(document.getElementById('root')).render(
 //   <StrictMode>
-    <SimpleForm/>
+    <FormWithCustomHook/>
 //   </StrictMode>,
 )
