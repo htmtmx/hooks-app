@@ -1,10 +1,7 @@
 import { useState } from "react";
 
-export const useSimpleForm = () => {
-    const [formState, setFormState] = useState({
-        username: 'htmtmx',
-        email: 'htmtmx@hotmail.com',
-    });
+export const useSimpleForm = (initialState) => {
+    const [formState, setFormState] = useState(initialState);
 
     const onChange = ({ target }) => {
         setFormState({ ...formState, [target.name]: target.value })
