@@ -1,22 +1,22 @@
 import { useEffect } from "react";
 import { useSimpleForm } from "../hooks/useSimpleForm";
+import { Message } from "./Message";
 
 export const SimpleForm = () => {
     const {formState, onChange } = useSimpleForm();
     const { username, email } = formState;
 
     useEffect(() => {
-        console.log("Use effect called");
+        // console.log("Use effect called");
     }, []);
 
     useEffect(() => {
-        console.log("formState changed");
+        // console.log("formState changed");
     }, [formState]);
 
     useEffect(() => {
-        console.log("email changed");
+        // console.log("email changed");
     }, [email]);
-    
 
     return (
         <section className="container vh-100 d-flex flex-column justify-content-center align-items-center">
@@ -38,6 +38,7 @@ export const SimpleForm = () => {
                     value={email}
                     onChange={onChange}
                 />
+                {username === 'htmtmx1' && <Message/>}
             </form>
         </section>
     )
