@@ -4,11 +4,12 @@ import { Message } from "./Message";
 
 export const FormWithCustomHook = () => {
 
-    const { formState, onChange } = useSimpleForm({
+    const { formState, onChange, resetForm } = useSimpleForm({
         username: '',
         email: '',
         password: ''
     });
+
     const { username, email, password } = formState;
 
     return (
@@ -39,6 +40,8 @@ export const FormWithCustomHook = () => {
                     value={password}
                     onChange={onChange}
                 />
+                <button className="btn btn-secondary" onClick={resetForm}>Reset</button>
+                <button type="submit" className="btn btn-primary">Submit</button>
                 {username === 'htmtmx1' && <Message/>}
             </form>
         </section>

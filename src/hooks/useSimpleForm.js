@@ -1,13 +1,19 @@
 import { useState } from "react";
 
-export const useSimpleForm = (initialState) => {
-    const [formState, setFormState] = useState(initialState);
+export const useSimpleForm = (initialFormState) => {
+    const [formState, setFormState] = useState(initialFormState);
 
     const onChange = ({ target }) => {
         setFormState({ ...formState, [target.name]: target.value })
     }
+
+    const resetForm = (e) => {
+        e.preventDefault();
+        setFormState(initialFormState);
+    }
     return {
         formState,
-        onChange
+        onChange,
+        resetForm
     }
 }
