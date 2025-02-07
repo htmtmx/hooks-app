@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react'
 
-export const useFetch = ({pokeName, pokeId}) => {
+export const useFetch = (url) => {
 
     const [state, setState] = useState({
         data: null,
@@ -12,13 +12,42 @@ export const useFetch = ({pokeName, pokeId}) => {
 
     useEffect(() => {
         getFetch();
-    }, [])
+    }, [url])
+
+    const setLoadingState = () => {
+        setState({
+            data: null,
+            isLoading: true,
+            hasError: false,
+            error: null,
+        })
+    }
 
     const getFetch = async () => {
-        const resp = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeName || pokeId}`);
+        setLoadingState();
+        const resp = await fetch(url);
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        if (!resp.ok) {
+            setState({
+                data: null,
+                isLoading: false,
+                hasError: true,
+                error: {
+                    code: resp.status,
+                    message: resp.statusText,
+                }
+            });
+            return;
+        }
         const data = await resp.json();
-        setState({...state, ['data']: data})
-        console.log(data);
+        setState({
+            data: data, 
+            isLoading       : false,
+            hasError: false,
+            error: null,
+        })
+
+        // Manejo del cache
     }
     
 
@@ -30,6 +59,5 @@ export const useFetch = ({pokeName, pokeId}) => {
 }
 
 useFetch.propTypes = {
-    pokeName: PropTypes.string,
-    pokeId: PropTypes.string
+    url: PropTypes.string,
 }
