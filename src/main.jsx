@@ -8,12 +8,13 @@ import './index.css'
 // import { FormWithCustomHook } from './02_useEffect/FormWithCustomHook'
 // import { MultipleCustomHooks } from './03_examples/MultipleCustomHooks'
 // import { FocusScreen } from './04_useRef/FocusScreen'
-import { Layout } from './05_useLayoutEffect/LAyout'
-import { Memorize } from './06_memos/Memorize'
+// import { Layout } from './05_useLayoutEffect/LAyout'
+// import { Memorize } from './06_memos/Memorize'
+import { MemoHook } from './06_memos/MemoHook'
 
 
 createRoot(document.getElementById('root')).render(
     //   <StrictMode>
-    <Memorize/>
+    <MemoHook/>
     //   </StrictMode>,
 )
