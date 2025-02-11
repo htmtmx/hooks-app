@@ -9,10 +9,11 @@ import './index.css'
 // import { MultipleCustomHooks } from './03_examples/MultipleCustomHooks'
 // import { FocusScreen } from './04_useRef/FocusScreen'
 import { Layout } from './05_useLayoutEffect/LAyout'
+import { Memorize } from './06_memos/Memorize'
 
 
 createRoot(document.getElementById('root')).render(
     //   <StrictMode>
-    <Layout/>
+    <Memorize/>
     //   </StrictMode>,
 )
