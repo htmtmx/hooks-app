@@ -1,6 +1,9 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
+import { StrictMode } from 'react';
+import { BrowserRouter } from "react-router-dom";
+import { createRoot } from 'react-dom/client';
+import { MainApp } from './09_useContext/MainApp';
+
+import './index.css';
 // import { CounterApp } from './01_useState/CounterApp'
 // import { HooksApp } from './HooksApp'
 // import { CounterWithCustomHook } from './01_useState/CounterWithCustomHook'
@@ -12,11 +15,13 @@ import './index.css'
 // import { Memorize } from './06_memos/Memorize'
 // import { MemoHook } from './06_memos/MemoHook'
 // import { CallbackHook } from './06_memos/CallbackHook'
-import { Padre } from './07-tarea-memo/Padre'
+// import { Padre } from './07-tarea-memo/Padre'
 
 
 createRoot(document.getElementById('root')).render(
-    //   <StrictMode>
-    <Padre/>
-    //   </StrictMode>,
+    <BrowserRouter>
+        {/*<StrictMode>*/}
+        <MainApp />
+        {/*</StrictMode>,*/}
+    </BrowserRouter>
 )
