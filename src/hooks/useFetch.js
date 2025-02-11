@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react'
 
+const localCache = {
+};
+
 export const useFetch = (url) => {
 
     const [state, setState] = useState({
@@ -24,6 +27,15 @@ export const useFetch = (url) => {
     }
 
     const getFetch = async () => {
+        if (localCache[url]) {
+            setState({
+                data: localCache[url],
+                isLoading: false,
+                hasError: false,
+                error: null,
+            })
+            return;
+        }
         setLoadingState();
         const resp = await fetch(url);
         await new Promise(resolve => setTimeout(resolve, 1000));
@@ -48,6 +60,7 @@ export const useFetch = (url) => {
         })
 
         // Manejo del cache
+        localCache[url] = data;
     }
     
 
@@ -58,6 +71,6 @@ export const useFetch = (url) => {
     }
 }
 
-useFetch.propTypes = {
+useFetch.PropTypes = {
     url: PropTypes.string,
 }
