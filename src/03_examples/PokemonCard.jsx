@@ -1,10 +1,22 @@
 import PropTypes from 'prop-types'
+import { useState, useRef, useLayoutEffect } from 'react';
 
-export const PokemonCard = ({id=1, pokeName='', sprites=[]}) => {
+export const PokemonCard = ({ id = 1, pokeName = '', sprites = [] }) => {
+
+    const [boxSize, setBoxSize] = useState({height: 0, width: 0});
+    
+    const h4Ref = useRef();
+    useLayoutEffect(() => {
+        
+        const { height, width } = h4Ref.current.getBoundingClientRect();
+        setBoxSize({height, width});
+      
+    }, [pokeName]);
+    
     return (
         <section className='card p-4 bg-light border border-dark rounded shadow text-center w-50 h-auto d-flex align-items-center justify-content-center'>
             <span>{id}</span>
-            <h4 className=''>{pokeName}</h4>
+            <h4 ref={h4Ref} className=''>{pokeName}</h4>
             <div className='container'>
             {sprites.map((sprite) => {
                 return (
@@ -12,6 +24,7 @@ export const PokemonCard = ({id=1, pokeName='', sprites=[]}) => {
                 )
             })}
             </div>
+            <pre>{JSON.stringify(boxSize)}</pre>
       </section>
   )
 }
