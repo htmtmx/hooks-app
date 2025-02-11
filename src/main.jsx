@@ -1,7 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import { CallbackHook } from './06_memos/CallbackHook'
 // import { CounterApp } from './01_useState/CounterApp'
 // import { HooksApp } from './HooksApp'
 // import { CounterWithCustomHook } from './01_useState/CounterWithCustomHook'
@@ -12,10 +11,12 @@ import { CallbackHook } from './06_memos/CallbackHook'
 // import { Layout } from './05_useLayoutEffect/LAyout'
 // import { Memorize } from './06_memos/Memorize'
 // import { MemoHook } from './06_memos/MemoHook'
+// import { CallbackHook } from './06_memos/CallbackHook'
+import { Padre } from './07-tarea-memo/Padre'
 
 
 createRoot(document.getElementById('root')).render(
     //   <StrictMode>
-    <CallbackHook/>
+    <Padre/>
     //   </StrictMode>,
 )
